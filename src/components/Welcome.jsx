@@ -28,6 +28,7 @@ const Welcome = () => {
       );
 
     return(
+      <div id="welcome-section" class="max-w-7xl mx-auto border-t-2  border-white pt-5">
        <div className="flex w-full justify-center items-center">
         <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
             <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
@@ -112,6 +113,7 @@ const Welcome = () => {
      
             </div>
 
+        </div>
         </div>
        
 
