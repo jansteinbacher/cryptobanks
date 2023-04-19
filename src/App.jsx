@@ -1,4 +1,4 @@
-import { Navbar, Welcome, Footer, CryptoPrices, Learn, Blog} from "./components";
+import { Navbar, Welcome, Footer, CryptoPrices, Learn, BlogarticleBitcoin} from "./components";
 import {BrowserRouter as Router, Route, Routes} from'react-router-dom';
 
 
@@ -11,7 +11,7 @@ const App = () => (
       <Router>
         <Routes>
           <Route path='/' element={<><CryptoPrices /><Learn /><Welcome /></>} />
-          <Route path='/blog' element={<Blog />} />
+          <Route path='/blog' element={<BlogarticleBitcoin />} />
         </Routes>
       </Router>
     </div>

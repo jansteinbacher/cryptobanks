@@ -6,4 +6,4 @@ export { default as Learn} from "./Learn";
 export { default as Footer } from "./Footer";
 export { default as Services } from "./Services";
 export { default as Transactions } from "./Transactions";
-export { default as Blog } from "./Blog";
+export { default as BlogarticleBitcoin } from "./BlogarticleBitcoin";

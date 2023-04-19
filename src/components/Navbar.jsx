@@ -17,12 +17,10 @@ const Navbar = () => {
       <a href="/"><img src={logo} link= "/" alt="logo" className="w-1/3 cursor-pointer flex items-center " /></a>
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial ">
-      <a href="/#market-section"><NavBarItem title="Market" link="/market" /></a>
-      <a href="/#learn-section" ><NavBarItem title="Learn" link="/exchange" /></a>
-      <a href="/#welcome-section"><NavBarItem title="Wallet" link="/tutorials" /></a>
-      <li className="bg-[#2952e3] py-2 px-7 mx-4 rounded-full cursor-pointer hover:bg-[#2546bd]">
-        Login
-      </li>
+      <a href="/#market-section" className="hover:font-bold"><NavBarItem title="Market" link="/market" /></a>
+      <a href="/#learn-section" className="hover:font-bold"><NavBarItem title="Learn" link="/exchange" /></a>
+      <a href="/#welcome-section" className="hover:font-bold"><NavBarItem title="Wallet" link="/tutorials" /></a>
+      
     </ul>
       <div className="flex relative">
         {!toggleMenu && (
