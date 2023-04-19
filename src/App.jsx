@@ -1,4 +1,4 @@
-import { Navbar, Welcome, Footer, Services, Transactions, CryptoPrices, Learn, Blog} from "./components";
+import { Navbar, Welcome, Footer, CryptoPrices, Learn, Blog} from "./components";
 import {BrowserRouter as Router, Route, Routes} from'react-router-dom';
 
 

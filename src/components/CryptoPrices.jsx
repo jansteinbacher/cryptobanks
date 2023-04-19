@@ -14,14 +14,31 @@ const height = 500 - margin.top - margin.bottom;
 function App() {
     const [data, setData] = useState([]);
     const [currency, setCurrency] = useState('bitcoin');
+    const [coins, setCoins] = useState([]);
+    const [coinName, setCoinName] = useState(currency);
+
+
     const handleChange = (event) => {
-        setCurrency(event.target.value);
+      const selectedIndex = event.target.selectedIndex;
+      setCurrency(event.target.value);
+      setCoinName(coins[selectedIndex].name);
     };
 
     const [timespan, setTimespan] = useState('30');
     const handleTimespanChange = (event) => {
         setTimespan(event.target.value);
     };
+
+    useEffect(() => {
+      async function fetchData() {
+        const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false');
+        const coins = response.data.map(coin => {
+          return { id: coin.id, name: coin.name };
+        });
+        setCoins(coins);
+      }
+      fetchData();
+    }, []);
   
 
   useEffect(() => {
@@ -105,8 +122,9 @@ function App() {
     <div id="market-section" className="flex w-full justify-center items-center">
         <div className="flex mf:flex-row flex-col items-start justify-between md:p-20 py-12 px-4">
             <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
-            <h1 className="text-3xl sm:text-5xl text-white py-1">
-            {currency} price for the last {timespan} days
+            <h1 className="text-3xl mx-auto sm:text-5xl text-white py-1">
+            {coinName} price over the last {timespan} days
+            <br></br>
           </h1>
           <svg className="flex flex-1 justify-start items-start flex-col mf:mr-10" width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}>
             <g transform={`translate(${margin.left},${margin.top})`}>
@@ -148,8 +166,8 @@ function App() {
       </g>
       <defs>
         <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor="#00c3ff" stopOpacity={0.8} />
-          <stop offset="100%" stopColor="#00c3ff" stopOpacity={0.1} />
+          <stop offset="0%" stopColor="#9F00FF" stopOpacity={0.8} />
+          <stop offset="100%" stopColor="#9F00FF" stopOpacity={0.1} />
         </linearGradient>
       </defs>
     </svg>
@@ -167,18 +185,27 @@ function App() {
             <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
 
             <label htmlFor="crypto-dropdown" className="text-m sm:text-L text-white py-1">Select a currency:</label>
-                <select className="rounded-full" id="crypto-dropdown" value={currency} onChange={handleChange}>
-                    <option value="bitcoin">₿ Bitcoin (BTC)</option>
-                    <option value="ethereum">Ξ Ethereum (ETH)</option>
-                    <option value="solana">S Solana (SOL)</option>
+                <select className="rounded-full" id="crypto-dropdown" key={coinName} value={currency} onChange={handleChange}>
+                  {coins.map(coin => (
+                    <option key={coin.name} value={coin.id}>
+                    {coin.name}
+                    </option>
+                  ))}
                 </select>
             
              <label htmlFor="timespan-dropdown" className="text-m sm:text-L text-white py-1">Select a timespan:</label>
                 <select className="rounded-full" id="timespan-dropdown" value={timespan} onChange={handleTimespanChange}>
                     <option value="30">30 days</option>
                     <option value="365">1 year</option>
-                    <option value="1095">3 years</option>
+                    <option value="1096">3 years</option>
                 </select>
+
+                <br></br>
+
+
+                <label htmlFor="timespan-dropdown" className="text-m sm:text-L text-white py-1">
+                  data from <a href="https://www.coingecko.com">coingecko.com</a>
+                  </label>
 
                
 

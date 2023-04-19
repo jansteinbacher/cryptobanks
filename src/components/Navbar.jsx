@@ -13,8 +13,8 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex md:justify-center justify-between items-center p-4">
-      <div className="md:flex-[0.5] flex-initial justify-center items-center">
-      <a href="/"><img src={logo} link= "/" alt="logo" className="w-32 cursor-pointer" /></a>
+      <div className="md:flex-[0.5] flex-initial justify-start items-center">
+      <a href="/"><img src={logo} link= "/" alt="logo" className="w-1/3 cursor-pointer flex items-center " /></a>
       </div>
       <ul className="text-white md:flex hidden list-none flex-row justify-between items-center flex-initial ">
       <a href="/#market-section"><NavBarItem title="Market" link="/market" /></a>
