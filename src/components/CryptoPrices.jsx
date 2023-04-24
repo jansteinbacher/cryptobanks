@@ -16,6 +16,9 @@ function App() {
     const [currency, setCurrency] = useState('bitcoin');
     const [coins, setCoins] = useState([]);
     const [coinName, setCoinName] = useState(currency);
+    const [bitcoinPrice, setBitcoinPrice] = useState(null);
+    const [ethereumPrice, setEthereumPrice] = useState(null);
+    const [solanaPrice, setSolanaPrice] = useState(null);
 
 
     const handleChange = (event) => {
@@ -65,6 +68,7 @@ function App() {
     return response.data.ethereum.usd;
   }
 
+
   async function getSolanaPrice() {
     const response = await axios.get(
       'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd'
@@ -72,9 +76,7 @@ function App() {
     return response.data.solana.usd;
   }
 
-    const [bitcoinPrice, setBitcoinPrice] = useState(null);
-    const [ethereumPrice, setEthereumPrice] = useState(null);
-    const [solanaPrice, setSolanaPrice] = useState(null);
+  
   
     useEffect(() => {
       async function fetchData() {
@@ -204,7 +206,7 @@ function App() {
 
 
                 <label htmlFor="timespan-dropdown" className="text-m sm:text-L text-white py-1">
-                  data from <a href="https://www.coingecko.com">coingecko.com</a>
+                  data from <a href="https://www.coingecko.com" target="_blank" className="font-bold" rel="noreferrer">coingecko.com</a>
                   </label>
 
                

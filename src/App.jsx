@@ -1,4 +1,4 @@
-import { Navbar, Welcome, Footer, CryptoPrices, Learn, BlogarticleBitcoin} from "./components";
+import { Navbar, Welcome, Footer, CryptoPrices, Learn, BlogarticleBitcoin, Wallet} from "./components";
 import {BrowserRouter as Router, Route, Routes} from'react-router-dom';
 
 
@@ -15,6 +15,7 @@ const App = () => (
         </Routes>
       </Router>
     </div>
+    <Wallet/>
     <Footer/>
   </div>
 );
