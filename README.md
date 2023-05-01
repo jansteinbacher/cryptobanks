@@ -5,8 +5,9 @@
   - [Wallet.jsx](src/components/Wallet.jsx) contains the section with the connection to Metamask
   - [CryptoPrices.jsx](src/components/CryptoPrices.jsx) contains the section with the chart of a coin 
   
-- [images](src/images/)
-- [App.jsx](src/App.jsx)
+- [images](src/images/) contains the images used in the project
+  - [Bitcoin.png](src/images/Bitcoin.png) is from [Wikipedia](https://en.wikipedia.org/wiki/Bitcoin)
+- [App.jsx](src/App.jsx) contains the routing between the different pages
 
 
 # Getting Started with Create React App
