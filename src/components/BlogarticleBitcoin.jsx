@@ -112,8 +112,9 @@ function BlogArticle() {
       </div>
       <div className="w-3/12 p-6">
         <div className="sticky top-24 ">
-          <h3 className="font-bold text-white text-xl font-bold mb-4">Inhaltsverzeichnis</h3>
+          <h3 className="font-bold text-white text-xl font-bold mb-4">Table of contents</h3>
           <ul>
+             {/*display h2 tags and highlight current section*/}
           {sections.map((section) => (
             <li key={section.id}>
               <button
@@ -125,7 +126,7 @@ function BlogArticle() {
             </li>
           ))}
 
-         
+         {/*display button to get to top of the page*/}
           <li><a href="# " className={`w-full text-left text-white fixed bottom-0 mb-40`}> 
             To the top 
             <FaArrowUp className="inline-block ml-1" />

@@ -31,7 +31,7 @@ function App() {
     const handleTimespanChange = (event) => {
         setTimespan(event.target.value);
     };
-
+    // fetches 50 biggest cryptocurrencies from coingecko API using Axios and safes it in a map object
     useEffect(() => {
       async function fetchData() {
         const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=USD&order=market_cap_desc&per_page=50&page=1&sparkline=false');
@@ -43,7 +43,7 @@ function App() {
       fetchData();
     }, []);
   
-
+// fetches price data from current chosen currency in the current timespan from coingecko API using Axios 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
@@ -54,6 +54,7 @@ function App() {
     fetchData();
   }, [currency, timespan]);
 
+  // fetches current bitcoin price from coingecko
   async function getBitcoinPrice() {
     const response = await axios.get(
       'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
@@ -61,6 +62,7 @@ function App() {
     return response.data.bitcoin.usd;
   }
 
+  // fetches current ethereum price from coingecko
   async function getEthereumPrice() {
     const response = await axios.get(
       'https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd'
@@ -68,7 +70,7 @@ function App() {
     return response.data.ethereum.usd;
   }
 
-
+  // fetches current solana price from coingecko
   async function getSolanaPrice() {
     const response = await axios.get(
       'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd'
@@ -77,7 +79,7 @@ function App() {
   }
 
   
-  
+  // set bitcoinprice
     useEffect(() => {
       async function fetchData() {
         const bitcoinPrice = await getBitcoinPrice();
@@ -87,6 +89,8 @@ function App() {
       fetchData();
     }, []);
 
+
+    // set ethereum price
     useEffect(() => {
         async function fetchData() {
           const ethereumPrice = await getEthereumPrice();
@@ -96,6 +100,7 @@ function App() {
         fetchData();
       }, []);
 
+      // set solana price
       useEffect(() => {
         async function fetchData() {
           const solanaPrice = await getSolanaPrice();
@@ -107,12 +112,13 @@ function App() {
   
 
 
-
+  // set the x axis depending on the chosen timespan
   const xScale = scaleTime({
     domain: [new Date(data[0]?.[0]), new Date(data[data.length - 1]?.[0])],
     range: [0, width],
   });
 
+  // sets y axis depending on data from chosen coin
   const yScale = scaleLinear({
     domain: [0, Math.max(...data.map((d) => d[1]))],
     range: [height, 0],
@@ -128,6 +134,8 @@ function App() {
             {coinName} price over the last {timespan} days
             <br></br>
           </h1>
+      
+          {/* displays chart of the coin */}
           <svg className="flex flex-1 justify-start items-start flex-col mf:mr-10" width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}>
             <g transform={`translate(${margin.left},${margin.top})`}>
             <AxisBottom top={height} scale={xScale} numTicks={width > 520 ? 10 : 5} stroke="#fff" 
@@ -184,8 +192,10 @@ function App() {
         <div className="flex flex-col flex-1 items-center justify-start w-full mf:mt-0 mt-10">
             
 
-            <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
+            <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center ">
 
+      
+            {/* dropdown menu for coins with coinmap object */}
             <label htmlFor="crypto-dropdown" className="text-m sm:text-L text-white py-1">Select a currency:</label>
                 <select className="rounded-full" id="crypto-dropdown" key={coinName} value={currency} onChange={handleChange}>
                   {coins.map(coin => (
@@ -195,6 +205,7 @@ function App() {
                   ))}
                 </select>
             
+                {/* dropdown menu for timespan */}
              <label htmlFor="timespan-dropdown" className="text-m sm:text-L text-white py-1">Select a timespan:</label>
                 <select className="rounded-full" id="timespan-dropdown" value={timespan} onChange={handleTimespanChange}>
                     <option value="30">30 days</option>
@@ -215,7 +226,11 @@ function App() {
 
             <br></br>
 
-            <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center blue-glassmorphism">
+            
+            {/* display current coin prices */}
+
+
+            <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-center ">
                 <label className="text-XL sm:text-2XL text-white py-1 font-bold">Current prices</label>
 
                 <p className="text-m sm:text-L text-white py-1">₿ Bitcoin (BTC) {bitcoinPrice} $</p>

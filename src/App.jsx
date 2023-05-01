@@ -1,4 +1,4 @@
-import { Navbar, Welcome, Footer, CryptoPrices, Learn, BlogarticleBitcoin, Wallet} from "./components";
+import { Navbar, Footer, CryptoPrices, Learn, BlogarticleBitcoin, Wallet, Blog, Quiz} from "./components";
 import {BrowserRouter as Router, Route, Routes} from'react-router-dom';
 
 
@@ -6,17 +6,20 @@ const App = () => (
   
 
   <div className="min-h-screen">
-    <div className="gradient-bg-welcome">
+    <div className="gradient-bg">
       <Navbar />
       <Router>
         <Routes>
-          <Route path='/' element={<><CryptoPrices /><Learn /><Welcome /></>} />
-          <Route path='/blog' element={<BlogarticleBitcoin />} />
+          <Route path='/' element={<><CryptoPrices /><Learn /><Wallet/></>} />
+          <Route path='/blogarticlebitcoin' element={<BlogarticleBitcoin />} />
+          <Route path='/blog' element={<Blog />} />
+          <Route path='/quiz' element={<Quiz />} />
         </Routes>
       </Router>
-    </div>
-    <Wallet/>
+    
+    
     <Footer/>
+    </div>
   </div>
 );
 
