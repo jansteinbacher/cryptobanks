@@ -1,3 +1,14 @@
+# Overview of files 
+- [components](src/components/) contains the components of the different sections
+  - [Blog.jsx](src/components/Blog.jsx) contains the page of the E-Learning
+  - [Blogtemplate.jsx](src/components/Blogtemplate.jsx) contains the page of an empty blog article and can later be used as template
+  - [Wallet.jsx](src/components/Wallet.jsx) contains the section with the connection to Metamask
+  - [CryptoPrices.jsx](src/components/CryptoPrices.jsx) contains the section with the chart of a coin 
+  
+- [images](src/images/)
+- [App.jsx](src/App.jsx)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
